@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obfuscate Bot WhatsApp Node.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+    textarea {
+      width: 95%;
+      height: 250px;
+      margin: 15px 0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    #outputCode {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+    }
+    .watermark {
+      margin-top: 20px;
+      font-size: 14px;
+      color: gray;
+    }
+    .keterangan {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bot WhatsApp Obfuscator</h1>
+  <p>Masukkan kode Node.js Anda di bawah ini, pilih level obfuscasi, atau gunakan fitur impor file.</p>
+  <textarea id="inputCode" placeholder="Tempelkan kode Node.js Anda di sini..."></textarea><br>
+
+  <!-- Pilihan level obfuscasi -->
+  <label for="obfuscationLevel">Pilih Level Obfuscasi:</label>
+  <select id="obfuscationLevel">
+    <option value="easy">Easy</option>
+    <option value="medium" selected>Medium</option>
+    <option value="hard">Hard</option>
+    <option value="super-hard">Super Hard</option>
+  </select><br>
+
+  <!-- Tombol kontrol -->
+  <button onclick="obfuscateCode()">Obfuscate</button>
+  <button onclick="resetCode()">Reset</button>
+  <input type="file" id="fileInput" onchange="importFile()" style="display: none;">
+  <button onclick="document.getElementById('fileInput').click()">Import File</button>
+
+  <h2>Hasil Obfuscasi:</h2>
+  <textarea id="outputCode" readonly placeholder="Hasil obfuscasi akan muncul di sini..."></textarea><br>
+  <button onclick="copyToClipboard()">Salin Kode</button>
+  <button onclick="downloadCode()">Download Kode</button>
+
+  <div class="watermark">WEB BY MONNSTORE</div>
+
+  <div class="keterangan">
+    <h3>Keterangan:</h3>
+    <p>
+      Mohon maaf jika website ini terlihat sederhana, karena web ini 100% terbuat dari AI. 
+      Mohon maaf juga jika kode kalian ada yang error. 
+      Terima kasih telah menggunakan website Monnstore.
+    </p>
+    <p>Terimakasih.</p>
+  </div>
+
+  <script>
+    function obfuscateCode() {
+      const inputCode = document.getElementById('inputCode').value.trim();
+      const level = document.getElementById('obfuscationLevel').value;
+
+      if (!inputCode) {
+        alert('Harap masukkan kode yang valid!');
+        return;
+      }
+
+      let options = {};
+      // Menentukan konfigurasi obfuscasi berdasarkan level yang dipilih
+      switch (level) {
+        case 'easy':
+          options = {
+            compact: true,
+            stringArray: true,
+            stringArrayThreshold: 0.2,
+          };
+          break;
+        case 'medium':
+          options = {
+            compact: true,
+            controlFlowFlattening: true,
+            stringArray: true,
+            stringArrayThreshold: 0.5,
+          };
+          break;
+        case 'hard':
+          options = {
+            compact: true,
+            controlFlowFlattening: true,
+            deadCodeInjection: true,
+            stringArray: true,
+            stringArrayEncoding: ['base64'],
+            stringArrayThreshold: 0.8,
+          };
+          break;
+        case 'super-hard':
+          options = {
+            compact: true,
+            controlFlowFlattening: true,
+            deadCodeInjection: true,
+            stringArray: true,
+            stringArrayEncoding: ['rc4'],
+            transformObjectKeys: true,
+            unicodeEscapeSequence: true,
+          };
+          break;
+        default:
+          alert('Level obfuscasi tidak valid!');
+          return;
+      }
+
+      try {
+        const obfuscatedCode = JavaScriptObfuscator.obfuscate(inputCode, options);
+        document.getElementById('outputCode').value = obfuscatedCode.getObfuscatedCode();
+      } catch (error) {
+        alert('Terjadi kesalahan saat mengobfuscasi kode. Periksa kembali kode Anda!');
+        console.error(error);
+      }
+    }
+
+    function resetCode() {
+      document.getElementById('inputCode').value = '';
+      document.getElementById('outputCode').value = '';
+    }
+
+    function importFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          document.getElementById('inputCode').value = event.target.result;
+        };
+        reader.readAsText(file);
+      } else {
+        alert('Tidak ada file yang dipilih!');
+      }
+    }
+
+    function copyToClipboard() {
+      const outputCode = document.getElementById('outputCode').value;
+
+      if (!outputCode) {
+        alert('Tidak ada kode untuk disalin!');
+        return;
+      }
+
+      navigator.clipboard.writeText(outputCode).then(() => {
+        alert('Kode berhasil disalin ke clipboard!');
+      }).catch((err) => {
+        console.error('Gagal menyalin kode:', err);
+      });
+    }
+
+    function downloadCode() {
+      const outputCode = document.getElementById('outputCode').value;
+
+      if (!outputCode) {
+        alert('Tidak ada kode untuk diunduh!');
+        return;
+      }
+
+      const blob = new Blob([outputCode], { type: 'text/javascript' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'obfuscated-code.js';
+      link.click();
+    }
+  </script>
+</body>
+</html>
