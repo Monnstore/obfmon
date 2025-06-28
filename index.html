@@ -1,208 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obfuscate Bot WhatsApp Node.js</title>
-  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MONNSTORE - Jualan Online</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff0000, #00ff00, #0000ff);
+      color: #fff;
+      user-select: none;
+      -webkit-user-drag: none:
+    }
+
+    header {
       text-align: center;
+      padding: 50px 20px;
     }
-    textarea {
-      width: 95%;
-      height: 250px;
-      margin: 15px 0;
-      border: 1px solid #ccc;
-      padding: 10px;
-      font-size: 14px;
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px #000;
+      margin-top: -20px;
     }
-    button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
+
+    header p {
+      font-size: 1.2em;
+      text-shadow: 1px 1px #000;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product {
+      background: rgba(0,0,0,0.5);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product h2 {
+      margin-top: 0;
+      color: #ffff00;
+    }
+
+    .product p {
+      font-size: 1.1em;
+    }
+
+    .btn {
+      background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 1em;
       cursor: pointer;
-      margin: 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
     }
-    button:hover {
-      background-color: #45a049;
+
+    .btn:hover {
+      opacity: 0.8;
     }
-    select {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px 0;
-    }
-    #outputCode {
-      background-color: #f4f4f4;
-      border: 1px solid #ddd;
-    }
-    .watermark {
-      margin-top: 20px;
-      font-size: 14px;
-      color: gray;
-    }
-    .keterangan {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <h1>Bot WhatsApp Obfuscator</h1>
-  <p>Masukkan kode Node.js Anda di bawah ini, pilih level obfuscasi, atau gunakan fitur impor file.</p>
-  <textarea id="inputCode" placeholder="Tempelkan kode Node.js Anda di sini..."></textarea><br>
+  <header>
+    <h1>MONNSTORE</h1>
+    <p>Jualan Online Murah & Terpercaya</p>
+  </header>
 
-  <!-- Pilihan level obfuscasi -->
-  <label for="obfuscationLevel">Pilih Level Obfuscasi:</label>
-  <select id="obfuscationLevel">
-    <option value="easy">Easy</option>
-    <option value="medium" selected>Medium</option>
-    <option value="hard">Hard</option>
-    <option value="super-hard">Super Hard</option>
-  </select><br>
+  <section class="products">
+    <div class="product">
+  <h2>Youtube Premium</h2>
+  <p>Harga: Rp10.000/bulan</p>
+  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
+  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
+    <li>Bisa main game sambil nonton YouTube (split screen)</li>
+    <li>Tonton video di latar belakang (layar mati)</li>
+    <li>Jadikan YouTube sebagai pemutar musik</li>
+    <li>Tidak ada iklan yang ganggu</li>
+    <li>✅ 100% legal & aman</li>
+  </ul>
+  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20Youtube%20Premium%20Rp10.000/bulan">Beli Sekarang</a>
+</div>
 
-  <!-- Tombol kontrol -->
-  <button onclick="obfuscateCode()">Obfuscate</button>
-  <button onclick="resetCode()">Reset</button>
-  <input type="file" id="fileInput" onchange="importFile()" style="display: none;">
-  <button onclick="document.getElementById('fileInput').click()">Import File</button>
+    <div class="product">
+  <h2>CapCut Pro</h2>
+  <p>Harga: Rp30.000/bulan</p>
+  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
+  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
+    <li>Tanpa watermark (video bersih)</li>
+    <li>Akses semua efek premium & transisi keren</li>
+    <li>Font & stiker eksklusif</li>
+    <li>Export kualitas tinggi (hingga 4K)</li>
+    <li>✅ 100% legal & aman</li>
+  </ul>
+  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20Capcut%20Pro%20Rp30.000/bulan">Beli Sekarang</a>
+</div>
 
-  <h2>Hasil Obfuscasi:</h2>
-  <textarea id="outputCode" readonly placeholder="Hasil obfuscasi akan muncul di sini..."></textarea><br>
-  <button onclick="copyToClipboard()">Salin Kode</button>
-  <button onclick="downloadCode()">Download Kode</button>
+   <div class="product">
+  <h2>Suntik Followers/Like/View</h2>
+  <p>Harga mulai Rp1.000</p>
+  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
+  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
+    <li>Proses cepat, tidak perlu lama menunggu</li>
+    <li>100% akun real, bukan bot</li>
+    <li>Bisa custom jumlah sesuai kebutuhan</li>
+    <li>Cocok untuk bisnis, personal, influencer</li>
+    <li>Harga sangat terjangkau</li>
+    <li>✅ 100% legal & aman</li>
+  </ul>
+  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20suntik%20followers/like/view%20mulai%20Rp1.000">Beli Sekarang</a>
+</div>
 
-  <div class="watermark">WEB BY MONNSTORE</div>
+    <div class="product">
+  <h2>Nokos Fresh</h2>
+  <p>Harga mulai Rp5.000</p>
+  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
+  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
+    <li>Bebas pilih negara sesuai kebutuhan</li>
+    <li>Nokos 100% milik buyer (bukan sewa)</li>
+    <li>Proses cepat & praktis</li>
+    <li>Tersedia hampir semua negara</li>
+    <li>Cocok untuk verifikasi akun sosial media atau aplikasi</li>
+    <li>Harga sangat terjangkau</li>
+    <li>✅ 100% legal & aman</li>
+  </ul>
+  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20Nokos%20Fresh%20mulai%20Rp5.000">Beli Sekarang</a>
+</div>
+  </section>
 
-  <div class="keterangan">
-    <h3>Keterangan:</h3>
-    <p>
-      Mohon maaf jika website ini terlihat sederhana, karena web ini 100% terbuat dari AI. 
-      Mohon maaf juga jika kode kalian ada yang error. 
-      Terima kasih telah menggunakan website Monnstore.
-    </p>
-    <p>Terimakasih.</p>
-  </div>
-
-  <script>
-    function obfuscateCode() {
-      const inputCode = document.getElementById('inputCode').value.trim();
-      const level = document.getElementById('obfuscationLevel').value;
-
-      if (!inputCode) {
-        alert('Harap masukkan kode yang valid!');
-        return;
-      }
-
-      let options = {};
-      // Menentukan konfigurasi obfuscasi berdasarkan level yang dipilih
-      switch (level) {
-        case 'easy':
-          options = {
-            compact: true,
-            stringArray: true,
-            stringArrayThreshold: 0.2,
-          };
-          break;
-        case 'medium':
-          options = {
-            compact: true,
-            controlFlowFlattening: true,
-            stringArray: true,
-            stringArrayThreshold: 0.5,
-          };
-          break;
-        case 'hard':
-          options = {
-            compact: true,
-            controlFlowFlattening: true,
-            deadCodeInjection: true,
-            stringArray: true,
-            stringArrayEncoding: ['base64'],
-            stringArrayThreshold: 0.8,
-          };
-          break;
-        case 'super-hard':
-          options = {
-            compact: true,
-            controlFlowFlattening: true,
-            deadCodeInjection: true,
-            stringArray: true,
-            stringArrayEncoding: ['rc4'],
-            transformObjectKeys: true,
-            unicodeEscapeSequence: true,
-          };
-          break;
-        default:
-          alert('Level obfuscasi tidak valid!');
-          return;
-      }
-
-      try {
-        const obfuscatedCode = JavaScriptObfuscator.obfuscate(inputCode, options);
-        document.getElementById('outputCode').value = obfuscatedCode.getObfuscatedCode();
-      } catch (error) {
-        alert('Terjadi kesalahan saat mengobfuscasi kode. Periksa kembali kode Anda!');
-        console.error(error);
-      }
-    }
-
-    function resetCode() {
-      document.getElementById('inputCode').value = '';
-      document.getElementById('outputCode').value = '';
-    }
-
-    function importFile() {
-      const fileInput = document.getElementById('fileInput');
-      const file = fileInput.files[0];
-
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          document.getElementById('inputCode').value = event.target.result;
-        };
-        reader.readAsText(file);
-      } else {
-        alert('Tidak ada file yang dipilih!');
-      }
-    }
-
-    function copyToClipboard() {
-      const outputCode = document.getElementById('outputCode').value;
-
-      if (!outputCode) {
-        alert('Tidak ada kode untuk disalin!');
-        return;
-      }
-
-      navigator.clipboard.writeText(outputCode).then(() => {
-        alert('Kode berhasil disalin ke clipboard!');
-      }).catch((err) => {
-        console.error('Gagal menyalin kode:', err);
-      });
-    }
-
-    function downloadCode() {
-      const outputCode = document.getElementById('outputCode').value;
-
-      if (!outputCode) {
-        alert('Tidak ada kode untuk diunduh!');
-        return;
-      }
-
-      const blob = new Blob([outputCode], { type: 'text/javascript' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'obfuscated-code.js';
-      link.click();
-    }
-  </script>
+  <footer>
+    &copy; 2025 MONNSTORE. All Rights Reserved.
+  </footer>
 </body>
 </html>
