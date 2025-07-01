@@ -2,159 +2,233 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MONNSTORE - Jualan Online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>MONNSTORE</title>
   <style>
     body {
       margin: 0;
+      background: #000;
+      color: #0ff;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #ff0000, #00ff00, #0000ff);
-      color: #fff;
+      overflow-x: hidden;
+      -webkit-user-drag: none;
       user-select: none;
-      -webkit-user-drag: none:
     }
 
     header {
       text-align: center;
       padding: 50px 20px;
-    }
-
-    header h1 {
+      background: linear-gradient(90deg, #0ff, #00f, #f0f, #0ff);
+      background-size: 600% 600%;
+      animation: neonBg 10s linear infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-size: 3em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px #000;
-      margin-top: -20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    header p {
-      font-size: 1.2em;
-      text-shadow: 1px 1px #000;
+    @keyframes neonBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      max-width: 1200px;
+    .container {
+      max-width: 600px;
       margin: 0 auto;
+      padding: 30px;
+      text-align: center;
     }
 
-    .product {
-      background: rgba(0,0,0,0.5);
+    .card {
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid cyan;
       border-radius: 10px;
       padding: 20px;
-      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 0 20px cyan;
       transition: transform 0.3s;
     }
+    .card ul {
+  list-style: square;
+  padding-left: 20px;
+  color: #0ff;
+  text-align: left;
+  padding: 10px;
+  margin-bottom: 15px;
+}
 
-    .product:hover {
-      transform: scale(1.05);
+.card ul li {
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px #0ff;
+}
+
+    .card:hover {
+      transform: none;
+      box-shadow: 0 0 30px #0ff, 0 0 40px #0ff;
+      max-width: 900px;
+      padding: 50px;
+    }
+    h2 {
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+      font-size: 1.5em;
     }
 
-    .product h2 {
-      margin-top: 0;
-      color: #ffff00;
-    }
-
-    .product p {
-      font-size: 1.1em;
+    p {
+      color: #aaa;
+      line-height: 1.6;
     }
 
     .btn {
-      background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
-      border: none;
-      color: #fff;
-      padding: 12px 20px;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 5px;
-      text-decoration: none;
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 20px;
+      padding: 15px 30px;
+      color: #000;
+      background: linear-gradient(45deg, #0ff, #00f, #f0f, #0ff);
+      background-size: 400% 400%;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      animation: gradientMove 5s linear infinite;
+      box-shadow: 0 0 20px #0ff;
+      transition: transform 0.3s;
     }
 
     .btn:hover {
-      opacity: 0.8;
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #0ff, 0 0 60px #0ff;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.5);
-      margin-top: 40px;
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
+ footer {
+  text-align: center;
+  color: #0ff;
+  padding: 20px;
+  font-size: 14px;
+  text-shadow: 0 0 10px #0ff;
+  background: rgba(0, 255, 255, 0.1);
+  border-top: 1px solid #0ff;
+}
+.sosmed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.sosmed h3 {
+  color: #0ff;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+.sosmed-icons {
+  display: flex;
+  gap: 30px;
+}
+
+.sosmed .icon {
+  color: #0ff;
+  font-size: 40px;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+  text-shadow: 0 0 10px #0ff;
+}
+
+.sosmed .icon:hover {
+  color: #f0f;
+  transform: scale(1.2);
+  text-shadow: 0 0 20px #f0f, 0 0 40px #f0f;
+}
   </style>
 </head>
 <body>
-  <header>
-    <h1>MONNSTORE</h1>
-    <p>Jualan Online Murah & Terpercaya</p>
-  </header>
+  <header>MONNSTORE</header>
+<div class="container">
+<div class="card">
+  <h2>Nokos WhatsApp</h2>
 
-  <section class="products">
-    <div class="product">
-  <h2>Youtube Premium</h2>
-  <p>Harga: Rp10.000/bulan</p>
-  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
-  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
-    <li>Bisa main game sambil nonton YouTube (split screen)</li>
-    <li>Tonton video di latar belakang (layar mati)</li>
-    <li>Jadikan YouTube sebagai pemutar musik</li>
-    <li>Tidak ada iklan yang ganggu</li>
-    <li>✅ 100% legal & aman</li>
+  <h3>Harga Rp 5.000</h3>
+  <ul>
+    <li>OTP max 1x</li>
+    <li>No garansi</li>
+    <li>Cocok untuk bot WhatsApp</li>
+    <li>100% anti HB (hack back)</li>
+    <li>Aman dan legal</li>
   </ul>
-  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20Youtube%20Premium%20Rp10.000/bulan">Beli Sekarang</a>
+
+  <h3>Harga Rp 20.000</h3>
+  <ul>
+    <li>OTP unlimited</li>
+    <li>Verifikasi all aplikasi & Google</li>
+    <li>Garansi 3 bulan</li>
+    <li>Cocok buat bot bug / jaga grup</li>
+    <li>Cocok buat daftar aplikasi WA, Discord, dll</li>
+    <li>100% anti HB (hack back)</li>
+    <li>Aman dan legal</li>
+  </ul>
+
+  <a href="https://wa.me/628311898012?text=Min%20Saya%20Mau%20Membeli%20Produk%20Kamu" class="btn">Pesan Sekarang</a>
+  </div>
+<div class="card">
+  <h2>YouTube Premium</h2>
+
+  <h3>Harga Rp 10.000</h3>
+  <ul>
+    <li>Bisa nonton video YouTube sambil main game</li>
+    <li>Bisa dengerin musik YouTube walaupun HP mati</li>
+    <li>Tidak ada iklan 100%</li>
+    <li>Legal dan aman</li>
+    <li>Garansi 1 bulan</li>
+    <li>⚠️Untuk aplikasi premium yang lain, bisa chat admin ya.</li>
+   </ul>
+  <a href="https://wa.me/628311898012?text=Min%20Saya%20Mau%20Membeli%20Produk%20Kamu" class="btn">Pesan Sekarang</a>
 </div>
 
-    <div class="product">
-  <h2>CapCut Pro</h2>
-  <p>Harga: Rp30.000/bulan</p>
-  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
-  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
-    <li>Tanpa watermark (video bersih)</li>
-    <li>Akses semua efek premium & transisi keren</li>
-    <li>Font & stiker eksklusif</li>
-    <li>Export kualitas tinggi (hingga 4K)</li>
-    <li>✅ 100% legal & aman</li>
-  </ul>
-  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20Capcut%20Pro%20Rp30.000/bulan">Beli Sekarang</a>
-</div>
+    <div class="card">
+  <h2>MY JASA</h2>
 
-   <div class="product">
-  <h2>Suntik Followers/Like/View</h2>
-  <p>Harga mulai Rp1.000</p>
-  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
-  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
-    <li>Proses cepat, tidak perlu lama menunggu</li>
-    <li>100% akun real, bukan bot</li>
-    <li>Bisa custom jumlah sesuai kebutuhan</li>
-    <li>Cocok untuk bisnis, personal, influencer</li>
-    <li>Harga sangat terjangkau</li>
-    <li>✅ 100% legal & aman</li>
+  <h3>Harga : Sekilasnya</h3>
+  <ul>
+    <li>Jasa pasang panel Pterodactyl (VPS & domain buyer)</li>
+    <li>Jasa pasang thema panel Pterodactyl (VPS buyer)</li>
+    <li>Jasa tambah fitur script (only bot WA)</li>
+    <li>Jasa pasang bot WhatsApp</li>
   </ul>
-  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20suntik%20followers/like/view%20mulai%20Rp1.000">Beli Sekarang</a>
-</div>
 
-    <div class="product">
-  <h2>Nokos Fresh</h2>
-  <p>Harga mulai Rp5.000</p>
-  <p style="font-weight: bold; margin-top: 10px;">Keuntungan:</p>
-  <ul style="text-align:left; font-size: 0.95em; margin-top: 5px;">
-    <li>Bebas pilih negara sesuai kebutuhan</li>
-    <li>Nokos 100% milik buyer (bukan sewa)</li>
-    <li>Proses cepat & praktis</li>
-    <li>Tersedia hampir semua negara</li>
-    <li>Cocok untuk verifikasi akun sosial media atau aplikasi</li>
-    <li>Harga sangat terjangkau</li>
-    <li>✅ 100% legal & aman</li>
+  <h3>Benefit :</h3>
+  <ul>
+    <li>Free egg</li>
+    <li>100% work</li>
+    <li>Free script create panel</li>
+    <li>Free setting script create panel</li>
   </ul>
-  <a class="btn" href="https://wa.me/628311898012?text=Halo%20MONNSTORE,%20saya%20ingin%20beli%20Nokos%20Fresh%20mulai%20Rp5.000">Beli Sekarang</a>
-</div>
-  </section>
 
+  <a href="https://wa.me/628311898012?text=Min%20Saya%20Mau%20Membeli%20Produk%20Kamu" class="btn">Hubungi Kami</a>
+</div>
+  </div>
+  <div class="sosmed">
+  <h3>My Sosmed </h3>
+  <div class="sosmed-icons">
+    <a href="https://github.com/Monnstore" target="_blank" class="icon"><i class="fab fa-github"></i></a>
+    <a href="https://wa.me628311898012/" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/@Momoncrypto" target="_blank" class="icon"><i class="fab fa-telegram"></i></a>
+  </div>
+</div>
   <footer>
-    &copy; 2025 MONNSTORE. All Rights Reserved.
-  </footer>
+  © 2025 MONNSTORE | All Rights Reserved
+</footer>
 </body>
-</html>
+  </html>
